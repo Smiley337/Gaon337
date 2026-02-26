@@ -13,12 +13,15 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f'{bot.user} 로 로그인 성공!')
-    
+
+async def on_member_updat(before, after):
+    ctx.send("{}님이 {}님이 되었어요!".format(before, after))
 @bot.command()
 async def 안녕(ctx):
     await ctx.send("안녕하세요! 👋")
 
 bot.run(TOKEN)
+
 
 
 
