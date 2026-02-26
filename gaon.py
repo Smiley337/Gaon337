@@ -51,10 +51,13 @@ async def join(ctx):
     channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
     
     if ctx.voice_client is not None:
-        await ctx.send("별 이동!")
-        print("음성 채널 정보: {0.author.voice}".format(ctx))
-        print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
-        return await ctx.voice_client.move_to(channel)
+        if channel == ctx.bot.voice.channel:
+            await ctx.send("이미 같이 있어요!")
+        else :
+            await ctx.send("별 이동!")
+            print("음성 채널 정보: {0.author.voice}".format(ctx))
+            print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
+            return await ctx.voice_client.move_to(channel)
 
     await channel.connect()
     await ctx.send("별 입장! ✨")
@@ -72,6 +75,7 @@ async def out(ctx):
 
 
 bot.run(TOKEN)
+
 
 
 
