@@ -35,9 +35,10 @@ async def 안녕(ctx):
 
 @bot.command(aliases=['뭐해?', 'ㅁㅎ', '넌 뭐해?']) #물음표는 인식을 못해서 aliases에 넣어야함
 async def 뭐해(ctx):
-    await ctx.send("일리님을 보조하고 있어요.. 피곤해요. {}님은 뭐하고 계시나요?".format(ctx.author.name))
+    await ctx.send("일리님을 보조하고 있어요.. 피곤해요. {}님은 뭐하고 계시나요?".format(ctx.author.display_name))
 
 bot.run(TOKEN)
+
 
 
 
