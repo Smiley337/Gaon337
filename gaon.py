@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f'{bot.user} 로 로그인 성공!')
     
-""" @bot.command()
+@bot.command()
 async def 안녕(ctx):
     await ctx.send("안녕하세요! 👋")
  """
@@ -27,6 +27,8 @@ async def hello(ctx):
     await ctx.channel.send("안녕")
   elif hi == 3:
     await ctx.channel.send("네, 안녕하세요")
+    """ 
 
 bot.run(TOKEN)
+
 
