@@ -18,7 +18,7 @@ async def on_ready():
 @bot.event #가온이가 본인 이름을 인식함
 async def on_message(message):
     if message.content.startswith("가온아"):
-        await message.channel.send("네에? 뭐하고 계시나요?")
+        await message.channel.send("네에? {}님은 뭐하고 계시나요?".format(ctx.author))
     
     await bot.process_commands(message)
 """
@@ -38,6 +38,7 @@ async def 뭐해(ctx):
     await ctx.send("일리님을 보조하고 있어요.. 피곤해요.")
 
 bot.run(TOKEN)
+
 
 
 
