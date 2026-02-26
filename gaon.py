@@ -54,7 +54,6 @@ async def join(ctx):
         print("음성 채널 정보: {0.author.voice}".format(ctx))
         print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
         return await ctx.voice_client.move_to(channel)
-    
     else:
         await ctx.send("어.. 제가 어.. ")
         await ctx.send("미안해요 고장났어요.")
@@ -74,6 +73,7 @@ async def out(ctx):
 
 
 bot.run(TOKEN)
+
 
 
 
