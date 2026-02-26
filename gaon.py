@@ -7,7 +7,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix=["!", "가온아 "], intents=intents)
 
 #봇이 켜지면 되는거래요?
 @bot.event
@@ -27,6 +27,7 @@ async def 안녕(ctx):
     await ctx.send("안녕하세요! 👋")
 
 bot.run(TOKEN)
+
 
 
 
