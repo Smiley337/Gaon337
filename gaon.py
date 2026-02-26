@@ -17,7 +17,7 @@ async def on_ready():
 
 @bot.event #가온이가 본인 이름을 인식함
 async def on_message(message):
-    if message.content.startswith("가온아"):
+    if message.content.startswith("가온!"):
         await message.channel.send("네에?")
 
     await bot.process_commands(message)
