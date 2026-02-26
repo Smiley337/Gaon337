@@ -17,18 +17,8 @@ async def on_ready():
 @bot.command()
 async def 안녕(ctx):
     await ctx.send("안녕하세요! 👋")
- """
-@bot.command(name="안녕", help="인사말", aliases=["인사", "하이"])
-async def hello(ctx):
-  hi = random.randrange(1,4)
-  if hi == 1:
-    await ctx.channel.send("안녕하세요")
-  elif hi == 2:
-    await ctx.channel.send("안녕")
-  elif hi == 3:
-    await ctx.channel.send("네, 안녕하세요")
-    """ 
 
 bot.run(TOKEN)
+
 
 
