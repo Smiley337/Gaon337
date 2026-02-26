@@ -1,2 +1,10 @@
+#기본 디스코드 pip install
 discord.py
+PyNaCl
+
+#dotenv 사용 기본 필요
 python-dotenv
+
+#디스코드 음성채널 사용 
+discord.py[voice]
+
