@@ -33,10 +33,6 @@ async def hello(interaction: discord.Interaction): #interaction 부분이 중요
 async def 안녕(ctx):
     await ctx.send("안녕하세요! 👋")
 
-@bot.command(aliases=['보지!', 'ㅄ']) #aliases는 안녕 대신에 쓸수있는 단어를 말함
-async def 꼽아(ctx):
-    await ctx.send("병신 새꺄 좀 닥쳐요!!")
-
 @bot.command(aliases=['뭐해?', 'ㅁㅎ', '넌 뭐해?']) #물음표는 인식을 못해서 aliases에 넣어야함
 async def 뭐해(ctx):
     await ctx.send("일리님을 보조하고 있어요.. 피곤해요. {}님은 뭐하고 계시나요?".format(ctx.author.display_name))
@@ -47,19 +43,21 @@ async def 뭐해(ctx):
 #입장하기 
 @bot.command(aliases=['들어와','통화방 와','연결'])
 async def join(ctx):
-    channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
 
     if ctx.author.voice is None: #만약 유저가 통화방에 들어가있지 않다면,
         await ctx.send("어.. 어디 계시나요? 못찾겠어요..")
         return #돌아가 새끼야
     
+    channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
+    
     if ctx.voice_client is not None:
-        await ctx.send("별 등장!")
+        await ctx.send("별 이동!")
         print("음성 채널 정보: {0.author.voice}".format(ctx))
         print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
         return await ctx.voice_client.move_to(channel)
 
     await channel.connect()
+    await ctx.send("별 입장! ✨")
 #퇴장
 @bot.command(aliases=['나가', '꺼져'])
 async def out(ctx):
