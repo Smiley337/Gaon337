@@ -37,7 +37,44 @@ async def 안녕(ctx):
 async def 뭐해(ctx):
     await ctx.send("일리님을 보조하고 있어요.. 피곤해요. {}님은 뭐하고 계시나요?".format(ctx.author.display_name))
 
+#음성 채널 기능들
+
+
+#입장하기 
+@bot.command(aliases=['들어와','통화방 와','연결'])
+async def join(ctx):
+    channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
+
+    if ctx.author.voice is None: #만약 유저가 통화방에 들어가있지 않다면,
+        await ctx.send("어.. 어디 계시나요? 못찾겠어요..")
+        return #돌아가 새끼야
+    
+    if ctx.voice_client is not None:
+        await ctx.send("별 등장!")
+        print("음성 채널 정보: {0.author.voice}".format(ctx))
+        print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
+        return await ctx.voice_client.move_to(channel)
+    
+    else:
+        await ctx.send("어.. 제가 어.. ")
+        await ctx.send("미안해요 고장났어요.")
+
+    await channel.connect()
+#퇴장
+@bot.command(aliases=['나가', '꺼져'])
+async def out(ctx):
+
+    if ctx.voice_client is None:
+        await ctx.send("저는 거기 없어요!!")
+        return
+
+    await ctx.voice_client.disconnect()
+    await ctx.send("가온이 {0.author.voice.channel}에서 나갔어요!".format(ctx))
+
+
+
 bot.run(TOKEN)
+
 
 
 
