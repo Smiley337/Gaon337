@@ -64,7 +64,10 @@ async def join(ctx):
 #퇴장
 @bot.command(aliases=['나가', '꺼져'])
 async def out(ctx):
-
+    if ctx.author.voice is None: #만약 유저가 통화방에 들어가있지 않다면,
+        await ctx.send("이씨 장난치지 말아요!")
+        return #돌아가 새끼야
+    
     if ctx.voice_client is None:
         await ctx.send("저는 거기 없어요!!")
         return
@@ -75,6 +78,7 @@ async def out(ctx):
 
 
 bot.run(TOKEN)
+
 
 
 
