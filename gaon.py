@@ -15,6 +15,12 @@ bot = commands.Bot(
     intents=intents
 )
 
+#music bot의 
+async def setup_hook():
+    await bot.add_cog(Music(bot))
+
+bot.setup_hook = setup_hook
+
 #봇이 켜지면 되는거래요?
 @bot.event
 async def on_ready():
@@ -203,9 +209,7 @@ class Music(commands.Cog):
         else:
             await ctx.send("..?? 아무것도 안부르고 있었는걸요..")
 
-bot.add_cog(Music(bot))
 bot.run(TOKEN)
-
 
 
 
