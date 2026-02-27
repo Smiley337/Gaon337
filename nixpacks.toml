@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["ffmpeg"]
+nixPkgs = ["python313", "ffmpeg"]
 
 [start]
-cmd = "python gaon.py"
+cmd = "python3 gaon.py"
