@@ -158,7 +158,7 @@ class Music(commands.Cog):
         self.bot = bot
 
     # ▶️ 음악 재생
-    @commands.command(aliases='불러줘')
+    @commands.command(aliases=['불러줘'])
     async def play(self, ctx, *, url):
         if ctx.voice_client is None:
             if ctx.author.voice:
@@ -204,6 +204,7 @@ class Music(commands.Cog):
 
 bot.add_cog(Music(bot))
 bot.run(TOKEN)
+
 
 
 
