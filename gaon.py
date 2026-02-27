@@ -51,7 +51,7 @@ async def join(ctx):
     channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
     
     if ctx.voice_client is not None:
-        if channel == ctx.bot.voice.channel:
+        if channel == ctx.voice_client.channel:
             await ctx.send("이미 같이 있어요!")
         else :
             await ctx.send("별 이동!")
@@ -75,6 +75,8 @@ async def out(ctx):
 
 
 bot.run(TOKEN)
+
+
 
 
 
