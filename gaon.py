@@ -56,11 +56,13 @@ async def join(ctx):
         else :
             await ctx.send("별 이동!")
             print("음성 채널 정보: {0.author.voice}".format(ctx))
-            print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
+            print("이동 음성 채널 이름: {0.author.voice.channel}".format(ctx))
             return await ctx.voice_client.move_to(channel)
 
     await channel.connect()
     await ctx.send("별 입장! ✨")
+    print("음성 채널 정보: {0.author.voice}".format(ctx))
+    print("음성 채널 이름: {0.author.voice.channel}".format(ctx))
 #퇴장
 @bot.command(aliases=['나가', '꺼져'])
 async def out(ctx):
@@ -71,13 +73,22 @@ async def out(ctx):
     if ctx.voice_client is None:
         await ctx.send("저는 거기 없어요!!")
         return
+    
+    channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
+    
+    if ctx.voice_client is not None:
+        if channel != ctx.voice_client.channel:
+            await ctx.send("뭐야! 같이 있지도 않으면서 왜 나가라해요. ")
+        return
 
     await ctx.voice_client.disconnect()
     await ctx.send("가온이 {0.author.voice.channel}에서 나갔어요!".format(ctx))
 
 
 
+
 bot.run(TOKEN)
+
 
 
 
