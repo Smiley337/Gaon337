@@ -70,16 +70,16 @@ async def out(ctx):
         await ctx.send("이씨 장난치지 말아요!")
         return #돌아가 새끼야
     
-    if ctx.voice_client is None:
-        await ctx.send("저는 거기 없어요!!")
-        return
-    
+        
     channel = ctx.author.voice.channel #유저가 있는 통화방을 channel이라는 값에 입력함
     
-    if ctx.voice_client is not None:
+    if ctx.voice_client is None:
         if channel != ctx.voice_client.channel:
             await ctx.send("뭐야! 같이 있지도 않으면서 왜 나가라해요. ")
+        await ctx.send("저는 거기 없어요!!")
         return
+
+    
 
     await ctx.voice_client.disconnect()
     await ctx.send("가온이 {0.author.voice.channel}에서 나갔어요!".format(ctx))
@@ -88,6 +88,7 @@ async def out(ctx):
 
 
 bot.run(TOKEN)
+
 
 
 
