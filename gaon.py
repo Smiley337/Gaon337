@@ -1,7 +1,11 @@
 import discord
 import yt_dlp 
 import asyncio
+import discord.opus
 
+if not discord.opus.is_loaded():
+    discord.opus.load_opus("libopus.so.0")
+    
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
@@ -210,6 +214,7 @@ class Music(commands.Cog):
             await ctx.send("..?? 아무것도 안부르고 있었는걸요..")
 
 bot.run(TOKEN)
+
 
 
 
