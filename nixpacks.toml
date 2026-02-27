@@ -1,10 +1,10 @@
+# nixpacks.toml
 [phases.setup]
-nixPkgs = ["python3", "nodejs", "ffmpeg"]
+nixPkgs = ["python313", "nodejs", "ffmpeg"] # 파이썬 버전을 명시
 
-[phases.build]
-cmds = ["pip install -r requirements.txt"]
+[phases.install]
+cmds = ["python -m venv /app/.venv", "source /app/.venv/bin/activate && pip install -r requirements.txt"]
 
 [start]
-cmd = "python Gaon.py"
-
+cmd = "source /app/.venv/bin/activate && python Gaon.py"
 
