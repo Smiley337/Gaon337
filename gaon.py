@@ -160,11 +160,12 @@ class Music(commands.Cog):
     # ▶️ 음악 재생
     @commands.command(aliases=['불러줘'])
     async def play(self, ctx, *, url):
+
+        if ctx.author.voice is None:
+            return await ctx.send("먼저 음성 채널에 들어가 주세요!")
+
         if ctx.voice_client is None:
-            if ctx.author.voice:
-                await ctx.author.voice.channel.connect()
-            else:
-                return await ctx.send("먼저 음성 채널에 들어가 주세요!")
+            await ctx.author.voice.channel.connect()
 
         async with ctx.typing():
             player = await YTDLSource.from_url(url, loop=self.bot.loop)
@@ -204,6 +205,7 @@ class Music(commands.Cog):
 
 bot.add_cog(Music(bot))
 bot.run(TOKEN)
+
 
 
 
