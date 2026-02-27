@@ -76,7 +76,8 @@ async def out(ctx):
     if ctx.voice_client is None:
         if channel != ctx.voice_client.channel:
             await ctx.send("뭐야! 같이 있지도 않으면서 왜 나가라해요. ")
-        await ctx.send("저는 거기 없어요!!")
+        else:
+            await ctx.send("저는 거기 없어요!!")
         return
 
     
@@ -87,7 +88,9 @@ async def out(ctx):
 
 
 
+
 bot.run(TOKEN)
+
 
 
 
