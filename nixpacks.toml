@@ -1,5 +1,8 @@
 [phases.setup]
-nixPkgs = ["python313", "ffmpeg", "libopus"]
+nixPkgs = ["python3", "nodejs", "ffmpeg"]
+
+[phases.install]
+cmds = ["python -m venv /app/.venv", "source /app/.venv/bin/activate && pip install -r requirements.txt"]
 
 [start]
-cmd = "python3 gaon.py"
+cmd = "source /app/.venv/bin/activate && python Gaon.py"
