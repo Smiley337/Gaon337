@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python3", "nodejs", "ffmpeg"]
+nixPkgs = ["python3", "nodejs", "ffmpeg", "opus"]
 
 [phases.install]
 cmds = ["python -m venv /app/.venv", "source /app/.venv/bin/activate && pip install -r requirements.txt"]
